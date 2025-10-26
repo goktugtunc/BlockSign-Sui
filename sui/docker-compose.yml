@@ -1,0 +1,17 @@
+version: "3.8"
+
+services:
+  walrus-aggregator:
+    image: ghcr.io/mystenlabs/walrus-aggregator:testnet
+    container_name: walrus-aggregator
+    restart: unless-stopped
+    ports:
+      - "8099:8080"
+    environment:
+      - WALRUS_ENV=testnet
+      - WALRUS_LOG_LEVEL=debug
+      - WALRUS_LISTEN_ADDR=0.0.0.0:8080
+      - WALRUS_DB_PATH=/data/db
+    volumes:
+      - ./walrus-data:/data
+
